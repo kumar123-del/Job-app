@@ -1,30 +1,35 @@
 package com.tarun.JobApp.service;
 
 import com.tarun.JobApp.model.JobPost;
+import com.tarun.JobApp.model.AppliedJob;
 import com.tarun.JobApp.repo.JobRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class JobService {
     @Autowired
-    public JobRepo repo;
-
+    private JobRepo repo;
 
     // method to add a jobPost
     public void addJob(JobPost jobPost) {
         repo.addJob(jobPost);
-
     }
 
-
-    //method to return all JobPosts
+    // method to return all JobPosts
     public List<JobPost> getAllJobs() {
         return repo.getAllJobs();
-
-
     }
 
+    // ✅ method to apply for a job
+    public void applyJob(AppliedJob application) {
+        repo.addApplication(application);
+    }
 
+    // ✅ method to get all applied jobs
+    public List<AppliedJob> getAllAppliedJobs() {
+        return repo.getAllApplications();
+    }
 }
